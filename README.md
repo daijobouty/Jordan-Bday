@@ -1,4 +1,4 @@
-# Jake's Birthday Site
+# Jordans's Birthday Site
 
 A reusable party website: hero banner, party details, a photo gallery, and an
 RSVP form that writes straight into a Google Sheet.
