@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Party</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <svg class="hero-scene" viewBox="0 0 800 130" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 90 Q200 40 400 90 T800 90 V130 H0 Z" fill="#345745" opacity="0.35"/>
+    <path d="M0 110 Q200 70 400 110 T800 110 V130 H0 Z" fill="#1F3A2E" opacity="0.5"/>
+    <!-- simple long-necked dino silhouette -->
+    <g fill="#1F3A2E">
+      <ellipse cx="620" cy="100" rx="48" ry="26"/>
+      <rect x="600" y="55" width="14" height="50" rx="7"/>
+      <ellipse cx="600" cy="50" rx="12" ry="10"/>
+      <rect x="655" y="90" width="10" height="34" rx="5"/>
+    </g>
+  </svg>
+  <div class="hero-content">
+    <p class="eyebrow" id="eyebrow-text">You're invited</p>
+    <h1 class="headline" id="headline-text">It's a birthday!</h1>
+    <p class="tagline" id="tagline-text"></p>
+    <a href="#rsvp" class="btn">RSVP now</a>
+  </div>
+</header>
+
+<div class="footprints" id="fp-1" aria-hidden="true">
+  <svg viewBox="0 0 24 24"><path d="M12 2c2 0 3 2 3 4s-1 4-3 4-3-2-3-4 1-4 3-4zm-6 9c1.5 0 2.5 1.5 2.5 3.5S7.5 19 6 19s-2.5-1.5-2.5-4.5S4.5 11 6 11zm12 0c1.5 0 2.5 2 2.5 4.5S19.5 19 18 19s-2.5-1.5-2.5-4.5S16.5 11 18 11z"/></svg>
+  <svg viewBox="0 0 24 24"><path d="M12 2c2 0 3 2 3 4s-1 4-3 4-3-2-3-4 1-4 3-4zm-6 9c1.5 0 2.5 1.5 2.5 3.5S7.5 19 6 19s-2.5-1.5-2.5-4.5S4.5 11 6 11zm12 0c1.5 0 2.5 2 2.5 4.5S19.5 19 18 19s-2.5-1.5-2.5-4.5S16.5 11 18 11z"/></svg>
+</div>
+
+<main class="container">
+
+  <section id="details">
+    <h2 class="section-title">Party details</h2>
+    <div class="details-grid">
+      <div class="detail-card">
+        <div class="icon">📅</div>
+        <h3>Date</h3>
+        <p id="detail-date"></p>
+      </div>
+      <div class="detail-card">
+        <div class="icon">🕐</div>
+        <h3>Time</h3>
+        <p id="detail-time"></p>
+      </div>
+      <div class="detail-card">
+        <div class="icon">📍</div>
+        <h3>Location</h3>
+        <p id="detail-location"></p>
+        <p class="form-note" id="detail-location-note"></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="footprints" id="fp-2" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M12 2c2 0 3 2 3 4s-1 4-3 4-3-2-3-4 1-4 3-4zm-6 9c1.5 0 2.5 1.5 2.5 3.5S7.5 19 6 19s-2.5-1.5-2.5-4.5S4.5 11 6 11zm12 0c1.5 0 2.5 2 2.5 4.5S19.5 19 18 19s-2.5-1.5-2.5-4.5S16.5 11 18 11z"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M12 2c2 0 3 2 3 4s-1 4-3 4-3-2-3-4 1-4 3-4zm-6 9c1.5 0 2.5 1.5 2.5 3.5S7.5 19 6 19s-2.5-1.5-2.5-4.5S4.5 11 6 11zm12 0c1.5 0 2.5 2 2.5 4.5S19.5 19 18 19s-2.5-1.5-2.5-4.5S16.5 11 18 11z"/></svg>
+  </div>
+
+  <section id="gallery">
+    <h2 class="section-title">Past adventures</h2>
+    <div id="gallery-grid" class="gallery-grid"></div>
+    <p class="gallery-status" id="gallery-status"></p>
+    <div style="text-align:center; margin-top:16px;">
+      <button type="button" id="shuffle-btn" class="btn btn-secondary" style="display:none;">Shuffle photos</button>
+    </div>
+  </section>
+
+  <div class="footprints" id="fp-3" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M12 2c2 0 3 2 3 4s-1 4-3 4-3-2-3-4 1-4 3-4zm-6 9c1.5 0 2.5 1.5 2.5 3.5S7.5 19 6 19s-2.5-1.5-2.5-4.5S4.5 11 6 11zm12 0c1.5 0 2.5 2 2.5 4.5S19.5 19 18 19s-2.5-1.5-2.5-4.5S16.5 11 18 11z"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M12 2c2 0 3 2 3 4s-1 4-3 4-3-2-3-4 1-4 3-4zm-6 9c1.5 0 2.5 1.5 2.5 3.5S7.5 19 6 19s-2.5-1.5-2.5-4.5S4.5 11 6 11zm12 0c1.5 0 2.5 2 2.5 4.5S19.5 19 18 19s-2.5-1.5-2.5-4.5S16.5 11 18 11z"/></svg>
+  </div>
+
+  <section id="rsvp">
+    <h2 class="section-title">RSVP</h2>
+    <div class="rsvp-card">
+      <p class="form-note" id="rsvp-deadline-note" style="margin-bottom:20px;"></p>
+      <form id="rsvp-form">
+        <div class="field">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="field">
+          <label>Will you be joining us?</label>
+          <div class="radio-row">
+            <label><input type="radio" name="attending" value="Yes" required> Yes</label>
+            <label><input type="radio" name="attending" value="No" required> No</label>
+          </div>
+        </div>
+        <div class="field">
+          <label for="guests">Number of guests (including you)</label>
+          <input type="number" id="guests" name="guests" min="1" value="1">
+        </div>
+        <div class="field">
+          <label for="message">Allergies, notes, or a message</label>
+          <textarea id="message" name="message"></textarea>
+        </div>
+        <p class="form-note" id="rsvp-extra-note"></p>
+        <button type="submit" class="btn" id="submit-btn">Send RSVP</button>
+        <p class="form-status" id="form-status"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Made with 🦕 for <span id="footer-name"></span>'s birthday.</p>
+</footer>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
