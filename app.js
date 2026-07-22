@@ -11,27 +11,14 @@ document.getElementById('rsvp-extra-note').textContent = PARTY.notes || '';
 document.getElementById('footer-name').textContent = PARTY.childName;
 document.title = `${PARTY.childName}'s Birthday`;
 
-// Google Drive photo gallery — fetches the file list once, then renders a random subset.
-// Uses drive.google.com/thumbnail links directly as <img src>, so there's no click-through
-// and no framing restriction (unlike embedding a Google Photos page).
+// Ambient photo backdrop behind the dino — auto-rotating, no clicks or scrolling needed.
+// Pulls random photos from your Drive folder and cross-fades them softly behind the hero.
 (function setupGallery() {
-  const grid = document.getElementById('gallery-grid');
-  const status = document.getElementById('gallery-status');
-  const shuffleBtn = document.getElementById('shuffle-btn');
-  let allFileIds = [];
-
-  function renderRandom() {
-    const shuffled = [...allFileIds].sort(() => Math.random() - 0.5);
-    const picked = shuffled.slice(0, PARTY.photoCount || 6);
-    grid.innerHTML = picked.map(id =>
-      `<img src="https://drive.google.com/thumbnail?id=${id}&sz=w600" alt="Party photo" loading="lazy">`
-    ).join('');
-  }
+  const container = document.getElementById('hero-photos');
 
   if (!PARTY.driveApiKey || !PARTY.driveFolderId ||
       PARTY.driveApiKey.includes('REPLACE_ME') || PARTY.driveFolderId.includes('REPLACE_ME')) {
-    status.textContent = 'Add your Google Drive API key and folder ID in config.js to show photos here.';
-    return;
+    return; // no photos configured yet — hero still looks fine without them
   }
 
   const url = `https://www.googleapis.com/drive/v3/files?q='${PARTY.driveFolderId}'+in+parents+and+mimeType+contains+'image/'&key=${PARTY.driveApiKey}&fields=files(id,name)&pageSize=1000`;
@@ -42,21 +29,15 @@ document.title = `${PARTY.childName}'s Birthday`;
       return res.json();
     })
     .then(data => {
-      allFileIds = (data.files || []).map(f => f.id);
-      if (allFileIds.length === 0) {
-        status.textContent = 'No photos found in the Drive folder yet.';
-        return;
-      }
-      renderRandom();
-      if (allFileIds.length > (PARTY.photoCount || 6)) {
-        shuffleBtn.style.display = 'inline-block';
-        shuffleBtn.addEventListener('click', renderRandom);
-      }
+      const ids = (data.files || []).map(f => f.id);
+      if (ids.length === 0) return;
+      const shuffled = [...ids].sort(() => Math.random() - 0.5);
+      const picked = shuffled.slice(0, PARTY.photoCount || 4);
+      container.innerHTML = picked.map(id =>
+        `<img src="https://drive.google.com/thumbnail?id=${id}&sz=w1000" alt="" loading="lazy">`
+      ).join('');
     })
-    .catch(err => {
-      status.textContent = "Couldn't load photos — check the API key, folder ID, and that the folder is shared as \"Anyone with the link.\"";
-      console.error(err);
-    });
+    .catch(err => console.error('Photo backdrop failed to load:', err));
 })();
 
 // Footprint dividers fade in as you scroll past them
