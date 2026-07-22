@@ -2,17 +2,17 @@
 // EDIT THIS FILE EACH YEAR. Nothing else needs to change.
 // ─────────────────────────────────────────────────────────
 const PARTY = {
-  childName: "Jake",
-  age: 6,
-  headline: "Jake is turning 6!",           // shown big in the hero
+  childName: "Jordan",
+  age: 1,
+  headline: "Jordan's First Birthday!",           // shown big in the hero
   tagline: "A prehistoric party awaits.",    // small line under the headline
 
-  date: "Saturday, September 12, 2026",
+  date: "Saturday, August 29, 2026",
   time: "1:00 PM – 3:00 PM",
-  location: "123 Fern Street, Palo Alto, CA",
-  locationNote: "Backyard party — please use the side gate.",
+  location: "tbd",
+  locationNote: "tbd",
 
-  rsvpDeadline: "September 1, 2026",
+  rsvpDeadline: "August 25, 2026",
 
   // Google Drive photo gallery (see README step 5)
   driveApiKey: "AIzaSyCBIHxVd_wp_q-jHELKOk9QL6Zng9OGrbI",
@@ -23,5 +23,5 @@ const PARTY = {
   rsvpEndpointUrl: "https://script.google.com/macros/s/REPLACE_ME/exec",
 
   // Optional: extra notes shown near RSVP (allergies, parking, etc.)
-  notes: "Let us know about any allergies. Parking is available on Fern Street."
+  notes: "Let us know about any allergies. Parking is available on blabh ablh."
 };
