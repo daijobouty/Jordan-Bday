@@ -20,7 +20,7 @@ const PARTY = {
   photoCount: 6,  // how many random photos to show at once
 
   // Paste your Google Apps Script Web App URL here (see README step 2)
-  rsvpEndpointUrl: "https://script.google.com/macros/s/REPLACE_ME/exec",
+  rsvpEndpointUrl: "https://script.google.com/macros/s/AKfycbxIfr7dtn6hvWhbc7j4QbG4d2EwVB_N4hOkI4pxa4DtM51e_ehmWdswqe5fOXO1eecmvw/exec",
 
   // Optional: extra notes shown near RSVP (allergies, parking, etc.)
   notes: "Let us know about any allergies. Parking is available on blabh ablh."
