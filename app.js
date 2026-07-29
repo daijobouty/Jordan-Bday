@@ -27,17 +27,19 @@ document.getElementById('rsvp-extra-note').textContent = PARTY.notes || '';
 document.getElementById('footer-name').textContent = PARTY.childName;
 document.title = `${PARTY.childName}'s Birthday`;
 
-// Ambient photo backdrop behind the dino — auto-rotating, no clicks or scrolling needed.
-// Pulls random photos from your Drive folder and cross-fades them softly behind the hero.
-(function setupGallery() {
-  const container = document.getElementById('hero-photos');
+// Small crossfading photo frame — shows one clear photo at a time from your Drive
+// folder, fading to a new random one every few seconds. No clicking, no scrolling.
+(function setupPhotoFrame() {
+  const imgA = document.getElementById('frame-img-a');
+  const imgB = document.getElementById('frame-img-b');
 
   if (!PARTY.driveApiKey || !PARTY.driveFolderId ||
       PARTY.driveApiKey.includes('REPLACE_ME') || PARTY.driveFolderId.includes('REPLACE_ME')) {
-    return; // no photos configured yet — hero still looks fine without them
+    return; // no photos configured yet
   }
 
   const url = `https://www.googleapis.com/drive/v3/files?q='${PARTY.driveFolderId}'+in+parents+and+mimeType+contains+'image/'&key=${PARTY.driveApiKey}&fields=files(id,name)&pageSize=1000`;
+  const toSrc = id => `https://drive.google.com/thumbnail?id=${id}&sz=w400`;
 
   fetch(url)
     .then(res => {
@@ -48,32 +50,33 @@ document.title = `${PARTY.childName}'s Birthday`;
       const ids = (data.files || []).map(f => f.id);
       if (ids.length === 0) return;
 
-      const count = PARTY.photoCount || 4;
-      const toSrc = id => `https://drive.google.com/thumbnail?id=${id}&sz=w1000`;
+      let pool = [...ids].sort(() => Math.random() - 0.5);
+      let poolIndex = 0;
+      function nextId() {
+        if (poolIndex >= pool.length) {
+          pool = [...ids].sort(() => Math.random() - 0.5);
+          poolIndex = 0;
+        }
+        return pool[poolIndex++];
+      }
 
-      const shuffled = [...ids].sort(() => Math.random() - 0.5);
-      const current = shuffled.slice(0, count);
-      container.innerHTML = current.map(id => `<img src="${toSrc(id)}" alt="" loading="lazy">`).join('');
-      const imgs = container.querySelectorAll('img');
+      let showingA = true;
+      imgA.src = toSrc(nextId());
+      imgA.classList.add('active');
 
-      // Nothing more to rotate in, or the person prefers reduced motion — leave it static.
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (ids.length <= count || reducedMotion) return;
+      if (ids.length <= 1 || reducedMotion) return;
 
-      // Every 6s (matching each photo's ~24s crossfade cycle), swap out whichever photo
-      // just finished being visible for a fresh random one, so long visits see more variety.
-      let tick = 0;
       setInterval(() => {
-        const idx = tick % count;
-        tick++;
-        const available = ids.filter(id => !current.includes(id));
-        const pool = available.length ? available : ids;
-        const nextId = pool[Math.floor(Math.random() * pool.length)];
-        current[idx] = nextId;
-        imgs[idx].src = toSrc(nextId);
-      }, 6000);
+        const incoming = showingA ? imgB : imgA;
+        const outgoing = showingA ? imgA : imgB;
+        incoming.src = toSrc(nextId());
+        incoming.classList.add('active');
+        outgoing.classList.remove('active');
+        showingA = !showingA;
+      }, 5000);
     })
-    .catch(err => console.error('Photo backdrop failed to load:', err));
+    .catch(err => console.error('Photo frame failed to load:', err));
 })();
 
 // Footprint dividers fade in as you scroll past them
