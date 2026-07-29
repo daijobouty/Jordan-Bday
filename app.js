@@ -1,6 +1,22 @@
 // Fill in text from config.js
 document.getElementById('eyebrow-text').textContent = `Turning ${PARTY.age}`;
-document.getElementById('headline-text').textContent = PARTY.headline;
+
+// Multicolor per-letter headline, echoing the invitation's playful lettering
+(function renderHeadline() {
+  const el = document.getElementById('headline-text');
+  let colorIndex = 0;
+  el.innerHTML = '';
+  for (const ch of PARTY.headline) {
+    const span = document.createElement('span');
+    span.textContent = ch;
+    if (ch.trim() !== '') {
+      span.className = 'letter c' + (colorIndex % 5);
+      colorIndex++;
+    }
+    el.appendChild(span);
+  }
+})();
+
 document.getElementById('tagline-text').textContent = PARTY.tagline;
 document.getElementById('detail-date').textContent = PARTY.date;
 document.getElementById('detail-time').textContent = PARTY.time;
@@ -31,11 +47,31 @@ document.title = `${PARTY.childName}'s Birthday`;
     .then(data => {
       const ids = (data.files || []).map(f => f.id);
       if (ids.length === 0) return;
+
+      const count = PARTY.photoCount || 4;
+      const toSrc = id => `https://drive.google.com/thumbnail?id=${id}&sz=w1000`;
+
       const shuffled = [...ids].sort(() => Math.random() - 0.5);
-      const picked = shuffled.slice(0, PARTY.photoCount || 4);
-      container.innerHTML = picked.map(id =>
-        `<img src="https://drive.google.com/thumbnail?id=${id}&sz=w1000" alt="" loading="lazy">`
-      ).join('');
+      const current = shuffled.slice(0, count);
+      container.innerHTML = current.map(id => `<img src="${toSrc(id)}" alt="" loading="lazy">`).join('');
+      const imgs = container.querySelectorAll('img');
+
+      // Nothing more to rotate in, or the person prefers reduced motion — leave it static.
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (ids.length <= count || reducedMotion) return;
+
+      // Every 6s (matching each photo's ~24s crossfade cycle), swap out whichever photo
+      // just finished being visible for a fresh random one, so long visits see more variety.
+      let tick = 0;
+      setInterval(() => {
+        const idx = tick % count;
+        tick++;
+        const available = ids.filter(id => !current.includes(id));
+        const pool = available.length ? available : ids;
+        const nextId = pool[Math.floor(Math.random() * pool.length)];
+        current[idx] = nextId;
+        imgs[idx].src = toSrc(nextId);
+      }, 6000);
     })
     .catch(err => console.error('Photo backdrop failed to load:', err));
 })();
