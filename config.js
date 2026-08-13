@@ -9,7 +9,7 @@ const PARTY = {
 
   date: "Sunday, August 30, 2026",
   time: "3:00 PM – 6:00 PM",
-  location: "Red Morton Park, Picnic Area #2, Redwood City, CA",
+  location: "Red Morton Park - Picnic Area #2, Redwood City, CA",
   locationGoogleMaps: "https://maps.app.goo.gl/t7PuurGizhR83ptZ8",
 
   rsvpDeadline: "August 25, 2026",
