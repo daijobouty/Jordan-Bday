@@ -36,7 +36,12 @@
     <!-- dashed track -->
     <path d="M0 230 Q200 200 400 230 T800 230" stroke="var(--navy)" stroke-width="3" stroke-dasharray="10 10" fill="none" opacity="0.3"/>
 
-    <!-- pinwheel -->
+    <!-- pinwheel (with motion trail) -->
+    <g class="motion-trail" transform="translate(95,110)">
+      <path d="M-40 -60 Q-25 -68 -12 -60" stroke="var(--slate)" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M-48 -45 Q-32 -55 -18 -45" stroke="var(--slate)" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M-52 -28 Q-36 -36 -22 -28" stroke="var(--slate)" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </g>
     <g transform="translate(95,110)">
       <g class="pinwheel-l">
         <path d="M0 0 L0 -55 Q35 -55 0 0 Z" fill="var(--sky)"/>
@@ -59,7 +64,7 @@
       <circle cx="0" cy="0" r="7" fill="var(--gold)"/>
     </g>
 
-    <!-- gear -->
+    <!-- gear (left-center) -->
     <g transform="translate(300,200)" class="gear-spin">
       <circle r="26" fill="var(--green)"/>
       <circle r="10" fill="var(--cream)"/>
@@ -84,15 +89,33 @@
       <circle r="5" fill="var(--ink)"/>
     </g>
 
+    <!-- tiny accent tire (left, new) -->
+    <g transform="translate(45,155) scale(0.55)">
+      <circle r="26" fill="var(--ink)"/>
+      <circle r="17" fill="var(--orange)"/>
+      <circle r="5" fill="var(--ink)"/>
+    </g>
+
     <!-- spinning top -->
-    <g transform="translate(470,205)" class="top-wobble">
+    <g transform="translate(430,215)" class="top-wobble">
       <path d="M-22 -20 L22 -20 L10 30 Q0 40 -10 30 Z" fill="var(--orange)"/>
       <rect x="-22" y="-30" width="44" height="12" rx="6" fill="var(--sky)"/>
       <rect x="-4" y="-42" width="8" height="14" rx="4" fill="var(--navy)"/>
     </g>
 
+    <!-- third pinwheel (right, new) -->
+    <g transform="translate(560,55) scale(0.55)">
+      <g class="pinwheel-l">
+        <path d="M0 0 L0 -55 Q35 -55 0 0 Z" fill="var(--gold)"/>
+        <path d="M0 0 L55 0 Q55 35 0 0 Z" fill="var(--navy)"/>
+        <path d="M0 0 L0 55 Q-35 55 0 0 Z" fill="var(--orange)"/>
+        <path d="M0 0 L-55 0 Q-55 -35 0 0 Z" fill="var(--sky)"/>
+      </g>
+      <circle cx="0" cy="0" r="7" fill="var(--green)"/>
+    </g>
+
     <!-- small gear (right) -->
-    <g transform="translate(620,120) scale(0.6)" class="gear-spin-r">
+    <g transform="translate(645,135) scale(0.6)" class="gear-spin-r">
       <circle r="26" fill="var(--gold)"/>
       <circle r="10" fill="var(--cream)"/>
       <g fill="var(--gold)">
@@ -103,32 +126,37 @@
       </g>
     </g>
 
-    <!-- accent wheel (right) -->
-    <g transform="translate(520,235)">
-      <circle r="24" fill="var(--ink)"/>
-      <circle r="16" fill="var(--green)"/>
+    <!-- steering wheel -->
+    <g transform="translate(575,225)" class="wheel-turn">
+      <circle r="28" fill="none" stroke="var(--navy)" stroke-width="9"/>
+      <circle r="8" fill="#B98A4E"/>
+      <g stroke="#B98A4E" stroke-width="5">
+        <line x1="0" y1="0" x2="0" y2="-22"/>
+        <line x1="0" y1="0" x2="19" y2="11"/>
+        <line x1="0" y1="0" x2="-19" y2="11"/>
+      </g>
+    </g>
+
+    <!-- accent wheel (right, new) -->
+    <g transform="translate(660,225)">
+      <circle r="22" fill="var(--ink)"/>
+      <circle r="14" fill="var(--green)"/>
       <g stroke="var(--ink)" stroke-width="2.2">
-        <line x1="-12" y1="0" x2="12" y2="0"/>
-        <line x1="0" y1="-12" x2="0" y2="12"/>
-        <line x1="-8" y1="-8" x2="8" y2="8"/>
-        <line x1="-8" y1="8" x2="8" y2="-8"/>
+        <line x1="-11" y1="0" x2="11" y2="0"/>
+        <line x1="0" y1="-11" x2="0" y2="11"/>
+        <line x1="-7" y1="-7" x2="7" y2="7"/>
+        <line x1="-7" y1="7" x2="7" y2="-7"/>
       </g>
       <circle r="4" fill="var(--ink)"/>
     </g>
 
-    <!-- steering wheel -->
-    <g transform="translate(590,230)" class="wheel-turn">
-      <circle r="30" fill="none" stroke="var(--navy)" stroke-width="9"/>
-      <circle r="9" fill="#B98A4E"/>
-      <g stroke="#B98A4E" stroke-width="6">
-        <line x1="0" y1="0" x2="0" y2="-24"/>
-        <line x1="0" y1="0" x2="21" y2="12"/>
-        <line x1="0" y1="0" x2="-21" y2="12"/>
-      </g>
+    <!-- bicycle wheel (with motion trail) -->
+    <g class="motion-trail" transform="translate(755,150)">
+      <path d="M-95 -25 Q-75 -35 -60 -25" stroke="var(--slate)" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M-100 0 Q-80 -8 -65 0" stroke="var(--slate)" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M-95 25 Q-75 18 -60 25" stroke="var(--slate)" stroke-width="3" fill="none" stroke-linecap="round"/>
     </g>
-
-    <!-- bicycle wheel -->
-    <g transform="translate(700,150)" class="wheel-spin-slow">
+    <g transform="translate(755,150)" class="wheel-spin-slow">
       <circle r="70" fill="none" stroke="var(--ink)" stroke-width="14"/>
       <g stroke="var(--slate)" stroke-width="2">
         <line x1="-60" y1="0" x2="60" y2="0"/>
