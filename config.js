@@ -8,9 +8,9 @@ const PARTY = {
   tagline: "Wheels turn, pinwheels spin, let the One-derful year begin!",    // small line under the headline
 
   date: "Sunday, August 30, 2026",
-  time: "1:00 PM – 3:00 PM",
-  location: "tbd",
-  locationNote: "tbd",
+  time: "3:00 PM – 6:00 PM",
+  location: "Red Morton Park, Picnic Area #2, Redwood City, CA",
+  locationGoogleMaps: "https://maps.app.goo.gl/t7PuurGizhR83ptZ8",
 
   rsvpDeadline: "August 25, 2026",
 
