@@ -1,15 +1,39 @@
 // Fill in text from config.js
 document.getElementById('eyebrow-text').textContent = `Turning ${PARTY.age}`;
 
-// Multicolor per-letter headline, echoing the invitation's playful lettering
+// Multicolor per-letter headline, with the O in the child's name shown as a tire (like the invitation)
 (function renderHeadline() {
   const el = document.getElementById('headline-text');
-  let colorIndex = 0;
+  const text = PARTY.headline;
+
+  const nameIdx = text.toLowerCase().indexOf(PARTY.childName.toLowerCase());
+  let tireIndex = -1;
+  if (nameIdx !== -1) {
+    const oInName = text.slice(nameIdx, nameIdx + PARTY.childName.length).toLowerCase().indexOf('o');
+    if (oInName !== -1) tireIndex = nameIdx + oInName;
+  }
+
+  const tireSVG = `<svg class="letter-tire" viewBox="0 0 40 40" aria-hidden="true">
+    <circle cx="20" cy="20" r="18" fill="var(--ink)"/>
+    <circle cx="20" cy="20" r="10" fill="#C9CED6"/>
+    <circle cx="20" cy="20" r="3" fill="var(--ink)"/>
+    <g fill="var(--ink)">
+      <circle cx="20" cy="13" r="1.6"/><circle cx="26" cy="17" r="1.6"/>
+      <circle cx="24" cy="24" r="1.6"/><circle cx="16" cy="24" r="1.6"/>
+      <circle cx="14" cy="17" r="1.6"/>
+    </g>
+  </svg>`;
+
   el.innerHTML = '';
-  for (const ch of PARTY.headline) {
+  let colorIndex = 0;
+  for (let i = 0; i < text.length; i++) {
+    if (i === tireIndex) {
+      el.insertAdjacentHTML('beforeend', tireSVG);
+      continue;
+    }
     const span = document.createElement('span');
-    span.textContent = ch;
-    if (ch.trim() !== '') {
+    span.textContent = text[i];
+    if (text[i].trim() !== '') {
       span.className = 'letter c' + (colorIndex % 5);
       colorIndex++;
     }

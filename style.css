@@ -141,6 +141,14 @@ a { color: var(--orange); }
 .headline .c3 { color: var(--sky); }
 .headline .c4 { color: var(--gold); }
 
+.headline .letter-tire {
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+  vertical-align: -0.03em;
+  margin: 0 0.01em;
+}
+
 .tagline {
   font-size: 19px;
   font-weight: 600;
@@ -334,18 +342,26 @@ footer {
 
 /* ---------- Hero scene animation ---------- */
 
-.pinwheel-l, .pinwheel-r, .gear-spin {
+.pinwheel-l, .pinwheel-r, .gear-spin, .gear-spin-r, .wheel-spin-slow, .wheel-turn {
   transform-box: fill-box;
   transform-origin: center;
 }
 .pinwheel-l { animation: spin 6s linear infinite; }
 .pinwheel-r { animation: spin 8s linear infinite reverse; }
 .gear-spin { animation: spin 12s linear infinite; }
+.gear-spin-r { animation: spin 9s linear infinite reverse; }
+.wheel-spin-slow { animation: spin 14s linear infinite; }
+.wheel-turn { animation: turn 3.5s ease-in-out infinite; }
 
 .top-wobble {
   transform-box: fill-box;
   transform-origin: bottom center;
   animation: wobble 1.8s ease-in-out infinite;
+}
+
+@keyframes turn {
+  0%, 100% { transform: rotate(-18deg); }
+  50% { transform: rotate(18deg); }
 }
 
 @keyframes spin {
@@ -360,5 +376,5 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .footprints { transition: none; opacity: 1; transform: none; }
-  .pinwheel-l, .pinwheel-r, .gear-spin, .top-wobble { animation: none; }
+  .pinwheel-l, .pinwheel-r, .gear-spin, .gear-spin-r, .wheel-spin-slow, .wheel-turn, .top-wobble { animation: none; }
 }

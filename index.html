@@ -71,10 +71,16 @@
       </g>
     </g>
 
-    <!-- accent tire -->
+    <!-- accent wheel (left) -->
     <g transform="translate(160,225)">
-      <circle r="26" fill="var(--ink)"/>
-      <circle r="17" fill="var(--sky)"/>
+      <circle r="28" fill="var(--ink)"/>
+      <circle r="19" fill="var(--sky)"/>
+      <g stroke="var(--ink)" stroke-width="2.5">
+        <line x1="-14" y1="0" x2="14" y2="0"/>
+        <line x1="0" y1="-14" x2="0" y2="14"/>
+        <line x1="-10" y1="-10" x2="10" y2="10"/>
+        <line x1="-10" y1="10" x2="10" y2="-10"/>
+      </g>
       <circle r="5" fill="var(--ink)"/>
     </g>
 
@@ -85,8 +91,33 @@
       <rect x="-4" y="-42" width="8" height="14" rx="4" fill="var(--navy)"/>
     </g>
 
+    <!-- small gear (right) -->
+    <g transform="translate(620,120) scale(0.6)" class="gear-spin-r">
+      <circle r="26" fill="var(--gold)"/>
+      <circle r="10" fill="var(--cream)"/>
+      <g fill="var(--gold)">
+        <rect x="-6" y="-38" width="12" height="16" rx="3"/>
+        <rect x="-6" y="22" width="12" height="16" rx="3"/>
+        <rect x="-38" y="-6" width="16" height="12" rx="3"/>
+        <rect x="22" y="-6" width="16" height="12" rx="3"/>
+      </g>
+    </g>
+
+    <!-- accent wheel (right) -->
+    <g transform="translate(520,235)">
+      <circle r="24" fill="var(--ink)"/>
+      <circle r="16" fill="var(--green)"/>
+      <g stroke="var(--ink)" stroke-width="2.2">
+        <line x1="-12" y1="0" x2="12" y2="0"/>
+        <line x1="0" y1="-12" x2="0" y2="12"/>
+        <line x1="-8" y1="-8" x2="8" y2="8"/>
+        <line x1="-8" y1="8" x2="8" y2="-8"/>
+      </g>
+      <circle r="4" fill="var(--ink)"/>
+    </g>
+
     <!-- steering wheel -->
-    <g transform="translate(590,230)">
+    <g transform="translate(590,230)" class="wheel-turn">
       <circle r="30" fill="none" stroke="var(--navy)" stroke-width="9"/>
       <circle r="9" fill="#B98A4E"/>
       <g stroke="#B98A4E" stroke-width="6">
@@ -97,7 +128,7 @@
     </g>
 
     <!-- bicycle wheel -->
-    <g transform="translate(700,150)">
+    <g transform="translate(700,150)" class="wheel-spin-slow">
       <circle r="70" fill="none" stroke="var(--ink)" stroke-width="14"/>
       <g stroke="var(--slate)" stroke-width="2">
         <line x1="-60" y1="0" x2="60" y2="0"/>
