@@ -98,6 +98,13 @@ a { color: var(--orange); }
 
 .hero-photo-frame img.active { opacity: 1; }
 
+.hero-photo-frame-left {
+  left: 7%;
+  right: auto;
+  top: 42%;
+  transform: rotate(-6deg);
+}
+
 @media (max-width: 640px) {
   .hero-photo-frame { display: none; }
 }
@@ -253,6 +260,15 @@ section { padding: 8px 0 40px; }
   margin: 0 0 6px;
 }
 .detail-card p { margin: 0; color: var(--slate); font-size: 15px; }
+
+.detail-card a#detail-location {
+  display: inline-block;
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: underline;
+}
+.detail-card a#detail-location:hover { color: var(--orange); }
 
 /* ---------- RSVP ---------- */
 

@@ -21,17 +21,22 @@ document.getElementById('tagline-text').textContent = PARTY.tagline;
 document.getElementById('detail-date').textContent = PARTY.date;
 document.getElementById('detail-time').textContent = PARTY.time;
 document.getElementById('detail-location').textContent = PARTY.location;
+document.getElementById('detail-location').href = PARTY.locationMapUrl || '#';
 document.getElementById('detail-location-note').textContent = PARTY.locationNote || '';
 document.getElementById('rsvp-deadline-note').textContent = `Please respond by ${PARTY.rsvpDeadline}.`;
 document.getElementById('rsvp-extra-note').textContent = PARTY.notes || '';
 document.getElementById('footer-name').textContent = PARTY.childName;
 document.title = `${PARTY.childName}'s Birthday`;
 
-// Small crossfading photo frame — shows one clear photo at a time from your Drive
-// folder, fading to a new random one every few seconds. No clicking, no scrolling.
-(function setupPhotoFrame() {
-  const imgA = document.getElementById('frame-img-a');
-  const imgB = document.getElementById('frame-img-b');
+// Two small crossfading photo frames (left and right) — each shows one clear photo
+// at a time from your Drive folder, fading to a new random one every few seconds.
+(function setupPhotoFrames() {
+  const framePairs = [
+    { a: document.getElementById('frame-img-a'), b: document.getElementById('frame-img-b') },
+    { a: document.getElementById('frame-img-c'), b: document.getElementById('frame-img-d') }
+  ].filter(p => p.a && p.b);
+
+  if (framePairs.length === 0) return;
 
   if (!PARTY.driveApiKey || !PARTY.driveFolderId ||
       PARTY.driveApiKey.includes('REPLACE_ME') || PARTY.driveFolderId.includes('REPLACE_ME')) {
@@ -50,33 +55,39 @@ document.title = `${PARTY.childName}'s Birthday`;
       const ids = (data.files || []).map(f => f.id);
       if (ids.length === 0) return;
 
-      let pool = [...ids].sort(() => Math.random() - 0.5);
-      let poolIndex = 0;
-      function nextId() {
-        if (poolIndex >= pool.length) {
-          pool = [...ids].sort(() => Math.random() - 0.5);
-          poolIndex = 0;
-        }
-        return pool[poolIndex++];
-      }
-
-      let showingA = true;
-      imgA.src = toSrc(nextId());
-      imgA.classList.add('active');
-
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (ids.length <= 1 || reducedMotion) return;
 
-      setInterval(() => {
-        const incoming = showingA ? imgB : imgA;
-        const outgoing = showingA ? imgA : imgB;
-        incoming.src = toSrc(nextId());
-        incoming.classList.add('active');
-        outgoing.classList.remove('active');
-        showingA = !showingA;
-      }, 5000);
+      framePairs.forEach((pair, frameIndex) => {
+        let pool = [...ids].sort(() => Math.random() - 0.5);
+        let poolIndex = 0;
+        function nextId() {
+          if (poolIndex >= pool.length) {
+            pool = [...ids].sort(() => Math.random() - 0.5);
+            poolIndex = 0;
+          }
+          return pool[poolIndex++];
+        }
+
+        let showingA = true;
+        pair.a.src = toSrc(nextId());
+        pair.a.classList.add('active');
+
+        if (ids.length <= 1 || reducedMotion) return;
+
+        // Stagger the two frames so they don't crossfade at the exact same moment.
+        setTimeout(() => {
+          setInterval(() => {
+            const incoming = showingA ? pair.b : pair.a;
+            const outgoing = showingA ? pair.a : pair.b;
+            incoming.src = toSrc(nextId());
+            incoming.classList.add('active');
+            outgoing.classList.remove('active');
+            showingA = !showingA;
+          }, 5000);
+        }, frameIndex * 2500);
+      });
     })
-    .catch(err => console.error('Photo frame failed to load:', err));
+    .catch(err => console.error('Photo frames failed to load:', err));
 })();
 
 // Footprint dividers fade in as you scroll past them

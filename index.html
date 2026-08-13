@@ -9,6 +9,12 @@
 <body>
 
 <header class="hero">
+  <div class="hero-photo-frame hero-photo-frame-left" id="hero-photo-frame-left" aria-hidden="true">
+    <div class="frame-inner">
+      <img id="frame-img-c" alt="">
+      <img id="frame-img-d" alt="">
+    </div>
+  </div>
   <div class="hero-photo-frame" id="hero-photo-frame" aria-hidden="true">
     <div class="frame-inner">
       <img id="frame-img-a" alt="">
@@ -42,6 +48,17 @@
       <rect x="-3" y="0" width="6" height="90" rx="3" fill="#B98A4E"/>
     </g>
 
+    <!-- second pinwheel, opposite spin -->
+    <g transform="translate(200,55) scale(0.6)">
+      <g class="pinwheel-r">
+        <path d="M0 0 L0 -55 Q35 -55 0 0 Z" fill="var(--navy)"/>
+        <path d="M0 0 L55 0 Q55 35 0 0 Z" fill="var(--orange)"/>
+        <path d="M0 0 L0 55 Q-35 55 0 0 Z" fill="var(--sky)"/>
+        <path d="M0 0 L-55 0 Q-55 -35 0 0 Z" fill="var(--green)"/>
+      </g>
+      <circle cx="0" cy="0" r="7" fill="var(--gold)"/>
+    </g>
+
     <!-- gear -->
     <g transform="translate(300,200)" class="gear-spin">
       <circle r="26" fill="var(--green)"/>
@@ -54,11 +71,29 @@
       </g>
     </g>
 
+    <!-- accent tire -->
+    <g transform="translate(160,225)">
+      <circle r="26" fill="var(--ink)"/>
+      <circle r="17" fill="var(--sky)"/>
+      <circle r="5" fill="var(--ink)"/>
+    </g>
+
     <!-- spinning top -->
     <g transform="translate(470,205)" class="top-wobble">
       <path d="M-22 -20 L22 -20 L10 30 Q0 40 -10 30 Z" fill="var(--orange)"/>
       <rect x="-22" y="-30" width="44" height="12" rx="6" fill="var(--sky)"/>
       <rect x="-4" y="-42" width="8" height="14" rx="4" fill="var(--navy)"/>
+    </g>
+
+    <!-- steering wheel -->
+    <g transform="translate(590,230)">
+      <circle r="30" fill="none" stroke="var(--navy)" stroke-width="9"/>
+      <circle r="9" fill="#B98A4E"/>
+      <g stroke="#B98A4E" stroke-width="6">
+        <line x1="0" y1="0" x2="0" y2="-24"/>
+        <line x1="0" y1="0" x2="21" y2="12"/>
+        <line x1="0" y1="0" x2="-21" y2="12"/>
+      </g>
     </g>
 
     <!-- bicycle wheel -->
@@ -103,7 +138,7 @@
       <div class="detail-card">
         <div class="icon-badge">📍</div>
         <h3>Location</h3>
-        <p id="detail-location"></p>
+        <a id="detail-location" href="#" target="_blank" rel="noopener"></a>
         <p class="form-note" id="detail-location-note"></p>
       </div>
     </div>
