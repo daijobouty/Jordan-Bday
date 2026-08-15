@@ -36,11 +36,13 @@
     <!-- dashed track -->
     <path d="M0 230 Q200 200 400 230 T800 230" stroke="var(--navy)" stroke-width="3" stroke-dasharray="10 10" fill="none" opacity="0.3"/>
 
-    <!-- pinwheel (with motion trail) — curved petal blades -->
-    <g class="motion-trail" transform="translate(95,110)">
-      <path d="M-40 -60 Q-25 -68 -12 -60" stroke="var(--slate)" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <path d="M-48 -45 Q-32 -55 -18 -45" stroke="var(--slate)" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <path d="M-52 -28 Q-36 -36 -22 -28" stroke="var(--slate)" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- pinwheel (with dust trail) — curved petal blades -->
+    <g class="dust-trail" transform="translate(95,110)">
+      <circle cx="-55" cy="30" r="14" fill="#E3E6EC"/>
+      <circle cx="-72" cy="22" r="10" fill="#EDEFF3"/>
+      <circle cx="-40" cy="42" r="11" fill="#D8DBE2"/>
+      <circle cx="-85" cy="35" r="8" fill="#EDEFF3"/>
+      <circle cx="-60" cy="48" r="9" fill="#CBD0DA"/>
     </g>
     <g transform="translate(95,110)">
       <g class="pinwheel-l">
@@ -51,6 +53,34 @@
       </g>
       <circle cx="0" cy="0" r="7" fill="var(--navy)"/>
       <rect x="-3" y="0" width="6" height="90" rx="3" fill="#B98A4E"/>
+    </g>
+
+    <!-- monster truck tire — fills the empty gap between pinwheel and gear -->
+    <g transform="translate(230,150)">
+      <circle r="40" fill="var(--ink)"/>
+      <g fill="#2A2F3A">
+        <rect x="-6" y="-42" width="12" height="10" rx="2" transform="rotate(0)"/>
+        <rect x="-6" y="-42" width="12" height="10" rx="2" transform="rotate(36)"/>
+        <rect x="-6" y="-42" width="12" height="10" rx="2" transform="rotate(72)"/>
+        <rect x="-6" y="-42" width="12" height="10" rx="2" transform="rotate(108)"/>
+        <rect x="-6" y="-42" width="12" height="10" rx="2" transform="rotate(144)"/>
+        <rect x="-6" y="-42" width="12" height="10" rx="2" transform="rotate(180)"/>
+        <rect x="-6" y="-42" width="12" height="10" rx="2" transform="rotate(216)"/>
+        <rect x="-6" y="-42" width="12" height="10" rx="2" transform="rotate(252)"/>
+        <rect x="-6" y="-42" width="12" height="10" rx="2" transform="rotate(288)"/>
+        <rect x="-6" y="-42" width="12" height="10" rx="2" transform="rotate(324)"/>
+      </g>
+      <circle r="24" fill="#B7BDC6"/>
+      <circle r="24" fill="none" stroke="#8A919C" stroke-width="2"/>
+      <g stroke="#6B7280" stroke-width="5" stroke-linecap="round">
+        <line x1="0" y1="0" x2="0" y2="-16" transform="rotate(0)"/>
+        <line x1="0" y1="0" x2="0" y2="-16" transform="rotate(72)"/>
+        <line x1="0" y1="0" x2="0" y2="-16" transform="rotate(144)"/>
+        <line x1="0" y1="0" x2="0" y2="-16" transform="rotate(216)"/>
+        <line x1="0" y1="0" x2="0" y2="-16" transform="rotate(288)"/>
+      </g>
+      <circle r="7" fill="#5B6570"/>
+      <circle r="3" fill="var(--ink)"/>
     </g>
 
     <!-- second pinwheel — sharp angular blades, opposite spin -->
@@ -161,11 +191,13 @@
       <circle r="4" fill="var(--ink)"/>
     </g>
 
-    <!-- bicycle wheel (with motion trail and tread texture) -->
-    <g class="motion-trail" transform="translate(755,150)">
-      <path d="M-95 -25 Q-75 -35 -60 -25" stroke="var(--slate)" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <path d="M-100 0 Q-80 -8 -65 0" stroke="var(--slate)" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <path d="M-95 25 Q-75 18 -60 25" stroke="var(--slate)" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- bicycle wheel (with dust trail and tread texture) -->
+    <g class="dust-trail" transform="translate(755,150)">
+      <circle cx="-95" cy="35" r="20" fill="#E3E6EC"/>
+      <circle cx="-120" cy="25" r="15" fill="#EDEFF3"/>
+      <circle cx="-70" cy="50" r="16" fill="#D8DBE2"/>
+      <circle cx="-140" cy="40" r="12" fill="#EDEFF3"/>
+      <circle cx="-100" cy="58" r="13" fill="#CBD0DA"/>
     </g>
     <g transform="translate(755,150)" class="wheel-spin-slow">
       <circle r="70" fill="none" stroke="var(--ink)" stroke-width="14"/>

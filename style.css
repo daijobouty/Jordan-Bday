@@ -364,17 +364,17 @@ footer {
   50% { transform: rotate(18deg); }
 }
 
-.motion-trail path {
+.dust-trail {
+  transform-box: fill-box;
+  transform-origin: center;
   opacity: 0;
-  animation: trail-pulse 1.4s ease-in-out infinite;
+  animation: dust-puff 2.2s ease-out infinite;
 }
-.motion-trail path:nth-child(1) { animation-delay: 0s; }
-.motion-trail path:nth-child(2) { animation-delay: 0.15s; }
-.motion-trail path:nth-child(3) { animation-delay: 0.3s; }
 
-@keyframes trail-pulse {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 0.45; }
+@keyframes dust-puff {
+  0% { opacity: 0; transform: scale(0.8); }
+  35% { opacity: 0.55; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.15); }
 }
 
 @keyframes spin {
@@ -390,5 +390,5 @@ footer {
   html { scroll-behavior: auto; }
   .footprints { transition: none; opacity: 1; transform: none; }
   .pinwheel-l, .pinwheel-r, .gear-spin, .gear-spin-r, .wheel-spin-slow, .wheel-turn, .top-wobble { animation: none; }
-  .motion-trail path { animation: none; opacity: 0; }
+  .dust-trail { animation: none; opacity: 0; }
 }
