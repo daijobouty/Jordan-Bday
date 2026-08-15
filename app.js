@@ -56,7 +56,8 @@ document.title = `${PARTY.childName}'s Birthday`;
 (function setupPhotoFrames() {
   const framePairs = [
     { a: document.getElementById('frame-img-a'), b: document.getElementById('frame-img-b') },
-    { a: document.getElementById('frame-img-c'), b: document.getElementById('frame-img-d') }
+    { a: document.getElementById('frame-img-c'), b: document.getElementById('frame-img-d') },
+    { a: document.getElementById('frame-img-m1'), b: document.getElementById('frame-img-m2') }
   ].filter(p => p.a && p.b);
 
   if (framePairs.length === 0) return;

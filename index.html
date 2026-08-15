@@ -38,12 +38,14 @@
     <path d="M0 230 Q200 200 400 230 T800 230" stroke="var(--navy)" stroke-width="3" stroke-dasharray="10 10" fill="none" opacity="0.3"/>
 
     <!-- pinwheel (with dust trail) — curved petal blades -->
-    <g class="dust-trail" transform="translate(95,110)">
-      <circle cx="-55" cy="30" r="14" fill="#E3E6EC"/>
-      <circle cx="-72" cy="22" r="10" fill="#EDEFF3"/>
-      <circle cx="-40" cy="42" r="11" fill="#D8DBE2"/>
-      <circle cx="-85" cy="35" r="8" fill="#EDEFF3"/>
-      <circle cx="-60" cy="48" r="9" fill="#CBD0DA"/>
+    <g transform="translate(95,110)">
+      <g class="dust-trail">
+        <circle cx="-55" cy="30" r="14" fill="#E3E6EC"/>
+        <circle cx="-72" cy="22" r="10" fill="#EDEFF3"/>
+        <circle cx="-40" cy="42" r="11" fill="#D8DBE2"/>
+        <circle cx="-85" cy="35" r="8" fill="#EDEFF3"/>
+        <circle cx="-60" cy="48" r="9" fill="#CBD0DA"/>
+      </g>
     </g>
     <g transform="translate(95,110)">
       <g class="pinwheel-l">
@@ -96,14 +98,16 @@
     </g>
 
     <!-- gear (left-center) -->
-    <g transform="translate(300,200)" class="gear-spin">
-      <circle r="26" fill="var(--green)"/>
-      <circle r="10" fill="var(--cream)"/>
-      <g fill="var(--green)">
-        <rect x="-6" y="-38" width="12" height="16" rx="3"/>
-        <rect x="-6" y="22" width="12" height="16" rx="3"/>
-        <rect x="-38" y="-6" width="16" height="12" rx="3"/>
-        <rect x="22" y="-6" width="16" height="12" rx="3"/>
+    <g transform="translate(300,200)">
+      <g class="gear-spin">
+        <circle r="26" fill="var(--green)"/>
+        <circle r="10" fill="var(--cream)"/>
+        <g fill="var(--green)">
+          <rect x="-6" y="-38" width="12" height="16" rx="3"/>
+          <rect x="-6" y="22" width="12" height="16" rx="3"/>
+          <rect x="-38" y="-6" width="16" height="12" rx="3"/>
+          <rect x="22" y="-6" width="16" height="12" rx="3"/>
+        </g>
       </g>
     </g>
 
@@ -183,30 +187,34 @@
     </g>
 
     <!-- small gear (right) -->
-    <g transform="translate(645,135) scale(0.6)" class="gear-spin-r">
-      <circle r="26" fill="var(--gold)"/>
-      <circle r="10" fill="var(--cream)"/>
-      <g fill="var(--gold)">
-        <rect x="-6" y="-38" width="12" height="16" rx="3"/>
-        <rect x="-6" y="22" width="12" height="16" rx="3"/>
-        <rect x="-38" y="-6" width="16" height="12" rx="3"/>
-        <rect x="22" y="-6" width="16" height="12" rx="3"/>
+    <g transform="translate(645,135) scale(0.6)">
+      <g class="gear-spin-r">
+        <circle r="26" fill="var(--gold)"/>
+        <circle r="10" fill="var(--cream)"/>
+        <g fill="var(--gold)">
+          <rect x="-6" y="-38" width="12" height="16" rx="3"/>
+          <rect x="-6" y="22" width="12" height="16" rx="3"/>
+          <rect x="-38" y="-6" width="16" height="12" rx="3"/>
+          <rect x="22" y="-6" width="16" height="12" rx="3"/>
+        </g>
       </g>
     </g>
 
     <!-- steering wheel — bigger, more prominent -->
-    <g transform="translate(635,222)" class="wheel-turn">
-      <circle r="36" fill="none" stroke="var(--navy)" stroke-width="11"/>
-      <circle r="10" fill="#B98A4E"/>
-      <g stroke="#B98A4E" stroke-width="6">
-        <line x1="0" y1="0" x2="0" y2="-28"/>
-        <line x1="0" y1="0" x2="24" y2="14"/>
-        <line x1="0" y1="0" x2="-24" y2="14"/>
+    <g transform="translate(635,222)">
+      <g class="wheel-turn">
+        <circle r="36" fill="none" stroke="var(--navy)" stroke-width="11"/>
+        <circle r="10" fill="#B98A4E"/>
+        <g stroke="#B98A4E" stroke-width="6">
+          <line x1="0" y1="0" x2="0" y2="-28"/>
+          <line x1="0" y1="0" x2="24" y2="14"/>
+          <line x1="0" y1="0" x2="-24" y2="14"/>
+        </g>
       </g>
     </g>
 
     <!-- accent wheel (right) — 6-spoke radial hubcap -->
-    <g transform="translate(500,245)">
+    <g transform="translate(500,228)">
       <circle r="26" fill="var(--ink)"/>
       <circle r="17" fill="var(--green)"/>
       <g stroke="var(--ink)" stroke-width="2">
@@ -221,23 +229,24 @@
     </g>
 
     <!-- bicycle wheel (with dust trail and tread texture) -->
-    <g class="dust-trail" transform="translate(755,150)">
-      <circle cx="-95" cy="35" r="20" fill="#E3E6EC"/>
-      <circle cx="-120" cy="25" r="15" fill="#EDEFF3"/>
-      <circle cx="-70" cy="50" r="16" fill="#D8DBE2"/>
-      <circle cx="-140" cy="40" r="12" fill="#EDEFF3"/>
-      <circle cx="-100" cy="58" r="13" fill="#CBD0DA"/>
-    </g>
-    <g transform="translate(755,150)" class="wheel-spin-slow">
-      <circle r="70" fill="none" stroke="var(--ink)" stroke-width="14"/>
-      <g fill="var(--ink)">
-        <rect x="-3" y="-78" width="6" height="8" transform="rotate(0)"/>
-        <rect x="-3" y="-78" width="6" height="8" transform="rotate(45)"/>
-        <rect x="-3" y="-78" width="6" height="8" transform="rotate(90)"/>
-        <rect x="-3" y="-78" width="6" height="8" transform="rotate(135)"/>
-        <rect x="-3" y="-78" width="6" height="8" transform="rotate(180)"/>
-        <rect x="-3" y="-78" width="6" height="8" transform="rotate(225)"/>
-        <rect x="-3" y="-78" width="6" height="8" transform="rotate(270)"/>
+    <g transform="translate(755,150)">
+      <g class="dust-trail">
+        <circle cx="-95" cy="35" r="20" fill="#E3E6EC"/>
+        <circle cx="-120" cy="25" r="15" fill="#EDEFF3"/>
+        <circle cx="-70" cy="50" r="16" fill="#D8DBE2"/>
+        <circle cx="-140" cy="40" r="12" fill="#EDEFF3"/>
+        <circle cx="-100" cy="58" r="13" fill="#CBD0DA"/>
+      </g>
+      <g class="wheel-spin-slow">
+        <circle r="70" fill="none" stroke="var(--ink)" stroke-width="14"/>
+        <g fill="var(--ink)">
+          <rect x="-3" y="-78" width="6" height="8" transform="rotate(0)"/>
+          <rect x="-3" y="-78" width="6" height="8" transform="rotate(45)"/>
+          <rect x="-3" y="-78" width="6" height="8" transform="rotate(90)"/>
+          <rect x="-3" y="-78" width="6" height="8" transform="rotate(135)"/>
+          <rect x="-3" y="-78" width="6" height="8" transform="rotate(180)"/>
+          <rect x="-3" y="-78" width="6" height="8" transform="rotate(225)"/>
+          <rect x="-3" y="-78" width="6" height="8" transform="rotate(270)"/>
         <rect x="-3" y="-78" width="6" height="8" transform="rotate(315)"/>
       </g>
       <g stroke="var(--slate)" stroke-width="2">
@@ -248,12 +257,19 @@
       </g>
       <circle r="10" fill="var(--gold)"/>
     </g>
+    </g>
   </svg>
   <div class="hero-content">
     <p class="eyebrow" id="eyebrow-text">You're invited</p>
     <h1 class="headline" id="headline-text">It's a birthday!</h1>
     <p class="tagline" id="tagline-text"></p>
     <a href="#rsvp" class="btn">RSVP now</a>
+    <div class="hero-photo-mobile" id="hero-photo-mobile" aria-hidden="true">
+      <div class="frame-inner">
+        <img id="frame-img-m1" alt="">
+        <img id="frame-img-m2" alt="">
+      </div>
+    </div>
   </div>
 </header>
 
