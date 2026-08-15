@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <title>Birthday Party</title>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -140,6 +141,34 @@
       <rect x="-4" y="-42" width="8" height="14" rx="4" fill="var(--navy)"/>
     </g>
 
+    <!-- monster truck tire (right) -->
+    <g transform="translate(470,105) scale(0.65)">
+      <circle r="40" fill="var(--ink)"/>
+      <g fill="#2A2F3A">
+        <rect x="-6" y="-42" width="12" height="10" rx="2" transform="rotate(0)"/>
+        <rect x="-6" y="-42" width="12" height="10" rx="2" transform="rotate(36)"/>
+        <rect x="-6" y="-42" width="12" height="10" rx="2" transform="rotate(72)"/>
+        <rect x="-6" y="-42" width="12" height="10" rx="2" transform="rotate(108)"/>
+        <rect x="-6" y="-42" width="12" height="10" rx="2" transform="rotate(144)"/>
+        <rect x="-6" y="-42" width="12" height="10" rx="2" transform="rotate(180)"/>
+        <rect x="-6" y="-42" width="12" height="10" rx="2" transform="rotate(216)"/>
+        <rect x="-6" y="-42" width="12" height="10" rx="2" transform="rotate(252)"/>
+        <rect x="-6" y="-42" width="12" height="10" rx="2" transform="rotate(288)"/>
+        <rect x="-6" y="-42" width="12" height="10" rx="2" transform="rotate(324)"/>
+      </g>
+      <circle r="24" fill="#B7BDC6"/>
+      <circle r="24" fill="none" stroke="#8A919C" stroke-width="2"/>
+      <g stroke="#6B7280" stroke-width="5" stroke-linecap="round">
+        <line x1="0" y1="0" x2="0" y2="-16" transform="rotate(0)"/>
+        <line x1="0" y1="0" x2="0" y2="-16" transform="rotate(72)"/>
+        <line x1="0" y1="0" x2="0" y2="-16" transform="rotate(144)"/>
+        <line x1="0" y1="0" x2="0" y2="-16" transform="rotate(216)"/>
+        <line x1="0" y1="0" x2="0" y2="-16" transform="rotate(288)"/>
+      </g>
+      <circle r="7" fill="#5B6570"/>
+      <circle r="3" fill="var(--ink)"/>
+    </g>
+
     <!-- third pinwheel — six slim blades, larger -->
     <g transform="translate(555,55) scale(0.7)">
       <g class="pinwheel-l">
@@ -264,6 +293,10 @@
     <div class="rsvp-card">
       <p class="form-note" id="rsvp-deadline-note" style="margin-bottom:20px;"></p>
       <form id="rsvp-form">
+        <div style="position:absolute; left:-9999px;" aria-hidden="true">
+          <label for="website">Leave this field empty</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
         <div class="field">
           <label for="name">Your name</label>
           <input type="text" id="name" name="name" required>

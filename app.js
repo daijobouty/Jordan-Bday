@@ -129,6 +129,15 @@ document.getElementById('rsvp-form').addEventListener('submit', async function (
   const submitBtn = document.getElementById('submit-btn');
   const form = e.target;
 
+  // Honeypot: real visitors never see or fill this field. If it's filled, it's a bot —
+  // pretend success without actually sending anything.
+  if (form.website && form.website.value.trim() !== '') {
+    statusEl.textContent = `Thanks! Your RSVP is in.`;
+    statusEl.className = 'form-status success';
+    form.reset();
+    return;
+  }
+
   if (!PARTY.rsvpEndpointUrl || PARTY.rsvpEndpointUrl.includes('REPLACE_ME')) {
     statusEl.textContent = 'RSVP endpoint not configured yet — see README step 2.';
     statusEl.className = 'form-status error';
