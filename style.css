@@ -168,6 +168,7 @@ a { color: var(--orange); }
   font-size: clamp(38px, 8.5vw, 68px);
   margin: 0 0 12px;
   line-height: 1.05;
+  text-wrap: balance;
 }
 
 /* Multicolor per-letter headline, echoing the invitation's playful lettering */
