@@ -26,6 +26,7 @@ document.getElementById('eyebrow-text').textContent = `Turning ${PARTY.age}`;
 
   el.innerHTML = '';
   let colorIndex = 0;
+  const firstSpaceIndex = text.indexOf(' ');
   for (let i = 0; i < text.length; i++) {
     if (i === tireIndex) {
       el.insertAdjacentHTML('beforeend', tireSVG);
@@ -38,6 +39,13 @@ document.getElementById('eyebrow-text').textContent = `Turning ${PARTY.age}`;
       colorIndex++;
     }
     el.appendChild(span);
+    // On mobile, force the line break right after the first word (e.g. "Jordan's")
+    // instead of leaving it to the browser, which can strand a lone letter on its own line.
+    if (i === firstSpaceIndex) {
+      const br = document.createElement('br');
+      br.className = 'mobile-break';
+      el.appendChild(br);
+    }
   }
 })();
 

@@ -130,8 +130,13 @@ a { color: var(--orange); }
 
 .hero-photo-mobile img.active { opacity: 1; }
 
+.headline .mobile-break { display: none; }
+
 @media (max-width: 640px) {
   .hero-photo-frame { display: none; }
+
+  .headline { text-wrap: normal; }
+  .headline .mobile-break { display: block; content: ""; }
 
   .hero-photo-mobile {
     display: block;
